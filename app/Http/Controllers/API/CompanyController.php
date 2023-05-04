@@ -30,6 +30,10 @@ class CompanyController extends Controller
             return ResponseFormatter::error(null, 'Company not found', 404);
         }
 
+        $companies = Company::whereHas('users', function ($query) {
+            $query->where('user_id', Auth::id());
+        });
+
         // example url all: powerhuman.com/api/company
         $companies = Company::with(['users']);
 
