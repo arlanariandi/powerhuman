@@ -34,9 +34,6 @@ class CompanyController extends Controller
             $query->where('user_id', Auth::id());
         });
 
-        // example url all: powerhuman.com/api/company
-        $companies = Company::with(['users']);
-
         if ($name) {
             $companies->where('name', 'like', '%' . $name . '%');
         }
