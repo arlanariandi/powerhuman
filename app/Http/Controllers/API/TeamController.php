@@ -78,7 +78,7 @@ class TeamController extends Controller
 
             // Check if company is exists
             if (!$team) {
-                throw new Exception('Company not updated');
+                throw new Exception('Team not updated');
             }
 
             // Upload icon
