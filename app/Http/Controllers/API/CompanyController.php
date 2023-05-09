@@ -87,7 +87,7 @@ class CompanyController extends Controller
 
             // Check if company is exists
             if (!$company) {
-                throw new Exception('Company not created');
+                throw new Exception('Company not updated');
             }
 
             // Upload logo
