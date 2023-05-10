@@ -86,10 +86,10 @@ class TeamController extends Controller
                 $path = $request->file('icon')->store('public/icons');
             }
 
-            // Create team
+            // Update team
             $team->update([
                 'name' => $request->name,
-                'icon' => $path,
+                'icon' => isset($path) ? $path : $team->icon,
                 'company_id' => $request->company_id,
             ]);
 
