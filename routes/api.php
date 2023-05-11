@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\API\CompanyController;
+use App\Http\Controllers\API\ResponsibilityController;
 use App\Http\Controllers\API\RoleController;
 use App\Http\Controllers\API\TeamController;
 use App\Http\Controllers\API\UserController;
@@ -47,6 +48,16 @@ Route::prefix('role')
         Route::post('', [RoleController::class, 'create'])->name('create');
         Route::post('update/{id}', [RoleController::class, 'update'])->name('update');
         Route::delete('{id}', [RoleController::class, 'destroy'])->name('delete');
+    });
+
+// Responsibility API
+Route::prefix('responsibility')
+    ->middleware('auth:sanctum')
+    ->name('responsibility.')
+    ->group(function () {
+        Route::get('', [ResponsibilityController::class, 'fetch'])->name('fetch');
+        Route::post('', [ResponsibilityController::class, 'create'])->name('create');
+        Route::delete('{id}', [ResponsibilityController::class, 'destroy'])->name('delete');
     });
 
 // Auth API

@@ -44,7 +44,7 @@ class CompanyController extends Controller
 
         return ResponseFormatter::success(
             $companies->paginate($limit),
-            'Company found'
+            'Companies found'
         );
     }
 
@@ -95,7 +95,7 @@ class CompanyController extends Controller
                 $path = $request->file('logo')->store('public/logos');
             }
 
-            // Create company
+            // Update company
             $company->update([
                 'name' => $request->name,
                 'logo' => isset($path) ? $path : $company->logo,

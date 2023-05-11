@@ -40,7 +40,7 @@ class RoleController extends Controller
 
         return ResponseFormatter::success(
             $roles->paginate($limit),
-            'Role found'
+            'Roles found'
         );
     }
 
