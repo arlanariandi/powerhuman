@@ -74,7 +74,7 @@ class RoleController extends Controller
             // Get role
             $role = Role::find($id);
 
-            // Check if company is exists
+            // Check if role is exists
             if (!$role) {
                 throw new Exception('Role not updated');
             }

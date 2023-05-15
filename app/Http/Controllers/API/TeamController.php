@@ -76,7 +76,7 @@ class TeamController extends Controller
             // Get team
             $team = Team::find($id);
 
-            // Check if company is exists
+            // Check if team is exists
             if (!$team) {
                 throw new Exception('Team not updated');
             }

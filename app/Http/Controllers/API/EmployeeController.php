@@ -5,6 +5,7 @@ namespace App\Http\Controllers\API;
 use App\Helpers\ResponseFormatter;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\CreateEmployeeRequest;
+use App\Http\Requests\UpdateEmployeeRequest;
 use App\Models\Employee;
 use Exception;
 use Illuminate\Http\Request;
@@ -98,30 +99,35 @@ class EmployeeController extends Controller
         }
     }
 
-    public function update(UpdateTeamRequest $request, $id)
+    public function update(UpdateEmployeeRequest $request, $id)
     {
         try {
-            // Get team
-            $team = Team::find($id);
+            // Get employee
+            $employee = Employee::find($id);
 
-            // Check if company is exists
-            if (!$team) {
-                throw new Exception('Team not updated');
+            // Check if employee is exists
+            if (!$employee) {
+                throw new Exception('Employee not updated');
             }
 
-            // Upload icon
-            if ($request->hasFile('icon')) {
-                $path = $request->file('icon')->store('public/icons');
+            // Upload photo
+            if ($request->hasFile('photo')) {
+                $path = $request->file('photo')->store('public/photos');
             }
 
-            // Update team
-            $team->update([
+            // Update employee
+            $employee->update([
                 'name' => $request->name,
-                'icon' => isset($path) ? $path : $team->icon,
-                'company_id' => $request->company_id,
+                'email' => $request->email,
+                'gender' => $request->gender,
+                'age' => $request->age,
+                'phone' => $request->phone,
+                'photo' => isset($path) ? $path : $employee->photo,
+                'team_id' => $request->team_id,
+                'role_id' => $request->role_id,
             ]);
 
-            return ResponseFormatter::success($team, 'Team updated');
+            return ResponseFormatter::success($employee, 'Employee updated');
         } catch (Exception $error) {
             return ResponseFormatter::error($error->getMessage(), 500);
         }
@@ -130,18 +136,18 @@ class EmployeeController extends Controller
     public function destroy($id)
     {
         try {
-            // Get team
-            $team = Team::find($id);
+            // Get employee
+            $employee = Employee::find($id);
 
-            // Check if team exists
-            if (!$team) {
-                throw new Exception('Team not found');
+            // Check if employee exists
+            if (!$employee) {
+                throw new Exception('Employee not found');
             }
 
-            // Delete team
-            $team->delete();
+            // Delete employee
+            $employee->delete();
 
-            return ResponseFormatter::success('Team deleted');
+            return ResponseFormatter::success('Employee deleted');
         } catch (Exception $error) {
             return ResponseFormatter::error($error->getMessage(), 500);
         }
