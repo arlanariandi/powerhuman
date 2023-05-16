@@ -68,3 +68,7 @@ The Laravel framework is open-sourced software licensed under the [MIT license](
 ## Desain ERD HRIS
 
 [ERD](https://whimsical.com/erd-hris-2ghw7BpYZP4r8GvMepGy2C) - Entity Relationship Diagram
+
+## Documentation API
+
+[Documentation](https://documenter.getpostman.com/view/9539633/2s93ecwpwW) API
