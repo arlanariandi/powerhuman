@@ -19,7 +19,7 @@ class TeamController extends Controller
         $name = $request->input('name');
         $limit = $request->input('limit', 10);
 
-        $teamQuery = Team::query();
+        $teamQuery = Team::withCount('employees');
 
         // Get single data
         if ($id) {
